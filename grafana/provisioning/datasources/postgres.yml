@@ -1,0 +1,21 @@
+apiVersion: 1
+
+datasources:
+  - name: Weather PostgreSQL
+    uid: weather-postgres
+    type: postgres
+    access: proxy
+    url: weather-db:5432
+    user: $WEATHER_DB_USER
+    database: $WEATHER_DB_NAME
+    isDefault: true
+    editable: true
+    jsonData:
+      sslmode: disable
+      postgresVersion: 1600
+      timescaledb: false
+      maxOpenConns: 100
+      maxIdleConns: 100
+      connMaxLifetime: 14400
+    secureJsonData:
+      password: $WEATHER_DB_PASSWORD
